@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Backups
+backups/
+*.dump
+*.sql.gz
+
+# Runtime data (uploads, OCR cache, Tesseract traineddata)
+data/
+*.traineddata
+tesseract-cache/
+
+# Docker local volumes / data
+docker-data/
+postgres-data/
+redis-data/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage
+coverage/
+
+# Drizzle
+.drizzle/
+
+# Misc
+.turbo/

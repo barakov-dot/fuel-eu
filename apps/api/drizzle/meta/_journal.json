@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1755440400000,
+      "tag": "0000_init_postgis",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1755440500000,
+      "tag": "0001_domain_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755440600000,
+      "tag": "0002_ingestion_and_srid",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1755440700000,
+      "tag": "0003_auth_and_users",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1755440800000,
+      "tag": "0004_crowdsourcing",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1755440900000,
+      "tag": "0005_photo_reporting",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1755441000000,
+      "tag": "0006_price_service_mode",
+      "breakpoints": true
+    }
+  ]
+}

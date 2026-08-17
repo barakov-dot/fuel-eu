@@ -1,0 +1,53 @@
+.list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+}
+
+.main {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.meta {
+  font-size: 0.875rem;
+  color: var(--muted, #666);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.empty {
+  color: var(--muted, #666);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  background: var(--badge-bg, #eef2ff);
+  color: var(--badge-fg, #3730a3);
+}
+
+.badgeOfficial {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.badgeCommunity {
+  background: #eff6ff;
+  color: #1d4ed8;
+}

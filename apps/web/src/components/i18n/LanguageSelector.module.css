@@ -1,0 +1,32 @@
+.wrapper {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.125rem;
+  border-radius: 999px;
+  background: var(--surface-muted);
+}
+
+.link,
+.active {
+  min-width: 2.75rem;
+  min-height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.link:hover,
+.link:focus-visible {
+  background: var(--surface-hover);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.active {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}

@@ -1,0 +1,66 @@
+{
+  "syncMode": "full",
+  "fetchedAt": "2026-08-17T11:00:00.000Z",
+  "license": "CC BY 4.0 - https://creativecommons.tankerkoenig.de",
+  "data": "MTS-K",
+  "stations": [
+    {
+      "id": "474e5046-deaf-4f9b-9a32-9797b778f047",
+      "name": "TOTAL BERLIN",
+      "brand": "TOTAL",
+      "street": "MARGARETE-SOMMER-STR.",
+      "houseNumber": "2",
+      "place": "BERLIN",
+      "postCode": 10407,
+      "lat": 52.53083,
+      "lng": 13.440946,
+      "diesel": 1.579,
+      "e5": 1.809,
+      "e10": 1.789,
+      "isOpen": true
+    },
+    {
+      "id": "60c0eefa-d2a8-4f5c-82cc-b5244ecae955",
+      "name": "ARAL POTSDAM",
+      "brand": "ARAL",
+      "street": "BRANDENBURGER STR.",
+      "houseNumber": "12",
+      "place": "POTSDAM",
+      "postCode": 14467,
+      "lat": 52.3912,
+      "lng": 13.0651,
+      "diesel": 1.629,
+      "e5": 1.849,
+      "e10": 1.829,
+      "isOpen": true
+    },
+    {
+      "id": "4429a7d9-fb2d-4c29-8cfe-2ca90323f9f8",
+      "street": "HARDENBERGSTR.",
+      "houseNumber": "1",
+      "place": "BERLIN",
+      "postCode": 10623,
+      "lat": 52.5074,
+      "lng": 13.3321,
+      "diesel": 1.589,
+      "e5": 1.819,
+      "e10": false,
+      "isOpen": true
+    },
+    {
+      "id": "446bdcf5-9f75-47fc-9cfa-2c3d6fda1c3b",
+      "name": "SHELL BERLIN",
+      "brand": "SHELL",
+      "street": "KARL-MARX-ALLEE",
+      "houseNumber": "90",
+      "place": "BERLIN",
+      "postCode": 10243,
+      "lat": 52.5188,
+      "lng": 13.4462,
+      "diesel": 1.569,
+      "e5": 1.809,
+      "e10": 1.789,
+      "isOpen": false
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+name: fuelmap-prod
+
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-fuelmap}
+      POSTGRES_USER: ${POSTGRES_USER:-fuelmap}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
+      TZ: UTC
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${POSTGRES_USER:-fuelmap} -d ${POSTGRES_DB:-fuelmap} && psql -U ${POSTGRES_USER:-fuelmap} -d ${POSTGRES_DB:-fuelmap} -tAc "SELECT PostGIS_version();" | grep -q .',
+        ]
+      interval: 5s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+    networks:
+      - internal
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command:
+      - redis-server
+      - --maxmemory
+      - 256mb
+      - --maxmemory-policy
+      - allkeys-lru
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+    networks:
+      - internal
+
+  migrate:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: fuelmap-api:prod
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-fuelmap}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-fuelmap}
+    command: ['node', 'dist/src/database/run-migrate.js']
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - internal
+    restart: 'no'
+
+  seed:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: fuelmap-api:prod
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-fuelmap}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-fuelmap}
+    command: ['node', 'dist/src/database/seeds/run-reference.js']
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    networks:
+      - internal
+    restart: 'no'
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: fuelmap-api:prod
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      API_PORT: 3001
+      API_GLOBAL_PREFIX: api
+      TRUST_PROXY: 'true'
+      DATABASE_URL: postgresql://${POSTGRES_USER:-fuelmap}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-fuelmap}
+      REDIS_URL: redis://redis:6379
+      IMAGE_STORAGE_PATH: /app/data/uploads
+      TESSERACT_CACHE_PATH: /app/data/tesseract-cache
+    volumes:
+      - api_uploads:/app/data/uploads
+      - tesseract_cache:/app/data/tesseract-cache
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      seed:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://127.0.0.1:3001/api/ready']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+    networks:
+      - internal
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URL: /api
+        NEXT_PUBLIC_MAP_STYLE_URL: ${NEXT_PUBLIC_MAP_STYLE_URL:-https://demotiles.maplibre.org/style.json}
+    image: fuelmap-web:prod
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://127.0.0.1:3000/']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    networks:
+      - internal
+
+  reverse-proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      api:
+        condition: service_healthy
+      web:
+        condition: service_healthy
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  api_uploads:
+  tesseract_cache:
+  caddy_data:
+  caddy_config:

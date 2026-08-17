@@ -1,0 +1,37 @@
+.message {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.info {
+  background: var(--surface-muted);
+  color: var(--foreground);
+}
+
+.warning {
+  background: #fff7e6;
+  color: #7a4d00;
+  border: 1px solid #f0d59a;
+}
+
+.error {
+  background: #fdecec;
+  color: #8a1f1f;
+  border: 1px solid #efb4b4;
+}
+
+@media (prefers-color-scheme: dark) {
+  .warning {
+    background: #3a2d12;
+    color: #f6d48a;
+    border-color: #6b531f;
+  }
+
+  .error {
+    background: #3a1717;
+    color: #f5b4b4;
+    border-color: #7a3030;
+  }
+}

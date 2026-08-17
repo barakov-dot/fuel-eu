@@ -1,0 +1,21 @@
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.loading {
+  font-size: 0.875rem;
+  color: var(--muted);
+}

@@ -1,0 +1,49 @@
+{
+  "name": "fuelmap-europe",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "install:all": "pnpm install",
+    "dev": "pnpm run --parallel dev:web dev:api",
+    "dev:web": "pnpm --filter @fuelmap/web dev",
+    "dev:api": "pnpm --filter @fuelmap/api dev",
+    "infra:up": "docker compose up -d 2>/dev/null || docker-compose up -d",
+    "infra:down": "docker compose down 2>/dev/null || docker-compose down",
+    "lint": "pnpm run -r lint",
+    "typecheck": "pnpm run -r typecheck",
+    "test": "pnpm run -r test",
+    "build": "pnpm run -r build",
+    "db:migrate": "pnpm --filter @fuelmap/api db:migrate",
+    "db:status": "pnpm --filter @fuelmap/api db:status",
+    "db:seed": "pnpm --filter @fuelmap/api db:seed",
+    "db:seed:dev": "pnpm --filter @fuelmap/api db:seed:dev",
+    "ingest:france": "pnpm --filter @fuelmap/api ingest:france",
+    "ingest:france:dry-run": "pnpm --filter @fuelmap/api ingest:france:dry-run",
+    "ingest:spain": "pnpm --filter @fuelmap/api ingest:spain",
+    "ingest:spain:dry-run": "pnpm --filter @fuelmap/api ingest:spain:dry-run",
+    "ingest:germany": "pnpm --filter @fuelmap/api ingest:germany",
+    "ingest:germany:dry-run": "pnpm --filter @fuelmap/api ingest:germany:dry-run",
+    "ingest:austria": "pnpm --filter @fuelmap/api ingest:austria",
+    "ingest:austria:dry-run": "pnpm --filter @fuelmap/api ingest:austria:dry-run",
+    "ingest:italy": "pnpm --filter @fuelmap/api ingest:italy",
+    "ingest:italy:dry-run": "pnpm --filter @fuelmap/api ingest:italy:dry-run",
+    "ingest:slovenia": "pnpm --filter @fuelmap/api ingest:slovenia",
+    "ingest:slovenia:dry-run": "pnpm --filter @fuelmap/api ingest:slovenia:dry-run",
+    "ingest:croatia": "pnpm --filter @fuelmap/api ingest:croatia",
+    "ingest:croatia:dry-run": "pnpm --filter @fuelmap/api ingest:croatia:dry-run",
+    "ingest": "pnpm --filter @fuelmap/api ingest",
+    "cleanup:sessions": "pnpm --filter @fuelmap/api cleanup:sessions",
+    "cleanup:report-images": "pnpm --filter @fuelmap/api cleanup:report-images",
+    "prod:build": "docker compose -f docker-compose.prod.yml build 2>/dev/null || docker-compose -f docker-compose.prod.yml build",
+    "prod:up": "docker compose -f docker-compose.prod.yml up -d 2>/dev/null || docker-compose -f docker-compose.prod.yml up -d",
+    "prod:local": "./scripts/deploy-local-prod.sh",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

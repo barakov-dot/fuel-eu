@@ -1,0 +1,22 @@
+# Local production simulation overrides (HTTP on localhost, no TLS).
+# Usage:
+#   cp .env.production.example .env.production
+#   docker compose -f docker-compose.prod.yml -f docker-compose.prod.local.yml up --build
+
+services:
+  reverse-proxy:
+    ports:
+      - '8080:80'
+    volumes:
+      - ./deploy/Caddyfile.local:/etc/caddy/Caddyfile:ro
+    environment:
+      APP_DOMAIN: localhost
+
+  postgres:
+    ports:
+      - '5433:5432'
+
+  api:
+    environment:
+      INGESTION_SCHEDULER_ENABLED: 'false'
+      INGESTION_RUN_ON_STARTUP: 'false'

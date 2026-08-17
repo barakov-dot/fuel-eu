@@ -1,0 +1,40 @@
+# Production reverse proxy (TLS enabled when APP_DOMAIN is a real public domain).
+# For local simulation, use deploy/Caddyfile.local with docker-compose.prod.local.yml.
+
+{
+	email {$ACME_EMAIL}
+}
+
+{$APP_DOMAIN} {
+	encode gzip zstd
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		X-Frame-Options SAMEORIGIN
+		-Server
+	}
+
+	request_body {
+		max_size 15MB
+	}
+
+	@api path /api/*
+	handle @api {
+		reverse_proxy api:3001 {
+			header_up X-Forwarded-Proto {scheme}
+			header_up X-Forwarded-Host {host}
+			header_up X-Forwarded-For {remote_host}
+		}
+	}
+
+	handle {
+		reverse_proxy web:3000 {
+			header_up X-Forwarded-Proto {scheme}
+			header_up X-Forwarded-Host {host}
+			header_up X-Forwarded-For {remote_host}
+		}
+	}
+
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+}

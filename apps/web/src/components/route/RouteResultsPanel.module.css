@@ -1,0 +1,77 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.meta {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.status {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.error {
+  font-size: 0.875rem;
+  color: var(--danger);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.cardSelected {
+  outline: 2px solid var(--accent);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.positive {
+  color: #15803d;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.negative {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.metrics,
+.savingsDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}

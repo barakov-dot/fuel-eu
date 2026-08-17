@@ -1,0 +1,70 @@
+{
+  "postajas": [
+    {
+      "id": 101,
+      "naziv": "INA ZAGREB",
+      "adresa": "Ilica 100",
+      "mjesto": "Zagreb",
+      "obveznik_id": 1,
+      "lat": "15.9819",
+      "long": "45.8150",
+      "cjenici": [
+        { "id": 1, "gorivo_id": 6, "cijena": 1.55 },
+        { "id": 2, "gorivo_id": 9, "cijena": 1.45 },
+        { "id": 3, "gorivo_id": 19, "cijena": 0.95 }
+      ]
+    },
+    {
+      "id": 102,
+      "naziv": "BP KARLOVAC",
+      "adresa": "Ulica bana Josipa Jelačića 5",
+      "mjesto": "Karlovac",
+      "obveznik_id": 2,
+      "lat": "15.5553",
+      "long": "45.4929",
+      "cjenici": [
+        { "id": 4, "gorivo_id": 28, "cijena": 1.72 },
+        { "id": 5, "gorivo_id": 30, "cijena": 1.64 }
+      ]
+    },
+    {
+      "id": 103,
+      "naziv": "ZATVORENA POSTAJA",
+      "adresa": "Test",
+      "mjesto": "Zagreb",
+      "obveznik_id": 1,
+      "lat": "15.9819",
+      "long": "45.8150",
+      "cjenici": []
+    },
+    {
+      "id": 104,
+      "naziv": "INVALID COORDS",
+      "adresa": "Test",
+      "mjesto": "Nowhere",
+      "lat": "0",
+      "long": "0",
+      "cjenici": [
+        { "id": 6, "gorivo_id": 6, "cijena": 1.5 }
+      ]
+    }
+  ],
+  "gorivos": [
+    { "id": 6, "vrsta_goriva_id": 1 },
+    { "id": 9, "vrsta_goriva_id": 7 },
+    { "id": 19, "vrsta_goriva_id": 10 },
+    { "id": 28, "vrsta_goriva_id": 5 },
+    { "id": 30, "vrsta_goriva_id": 8 }
+  ],
+  "vrsta_gorivas": [
+    { "id": 1, "vrsta_goriva": "Eurosuper 95 sa aditivima", "tip_goriva_id": 1 },
+    { "id": 5, "vrsta_goriva": "Eurosuper 100 sa aditivima", "tip_goriva_id": 1 },
+    { "id": 7, "vrsta_goriva": "Eurodizel sa aditivima", "tip_goriva_id": 2 },
+    { "id": 8, "vrsta_goriva": "Eurodizel bez aditiva", "tip_goriva_id": 2 },
+    { "id": 10, "vrsta_goriva": "Plinsko ulje LU EL (lož ulje)", "tip_goriva_id": 4 }
+  ],
+  "obvezniks": [
+    { "id": 1, "naziv": "INA d.d." },
+    { "id": 2, "naziv": "BP Hrvatska d.o.o." }
+  ]
+}

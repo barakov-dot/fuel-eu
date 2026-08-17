@@ -1,0 +1,43 @@
+# Build context: repository root
+
+# Dependencies and build artifacts
+node_modules
+**/node_modules
+**/.next
+**/dist
+apps/api/coverage
+apps/web/coverage
+**/.turbo
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Runtime data (mounted as volumes in production)
+data/uploads
+backups
+
+# Git and editor
+.git
+.gitignore
+.cursor
+.vscode
+*.md
+!docs/deployment.md
+!docs/runbook.md
+!docs/release-checklist.md
+
+# Tests and dev fixtures (not needed in production images)
+**/test
+**/*.spec.ts
+**/*.e2e-spec.ts
+**/*.integration.spec.ts
+
+# Docker compose local overrides
+docker-compose.prod.local.yml
+
+# OS
+.DS_Store
+Thumbs.db

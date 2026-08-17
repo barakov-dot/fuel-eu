@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1494440,
+    "name": "TMC Werkstatt & Tankstelle",
+    "location": {
+      "address": "Rechte Wienzeile 43",
+      "postalCode": "1050",
+      "city": "Wien",
+      "latitude": 48.1963966,
+      "longitude": 16.358812
+    },
+    "open": true,
+    "distance": 1.721,
+    "position": 1,
+    "prices": [{ "fuelType": "DIE", "amount": 1.979, "label": "Diesel" }]
+  },
+  {
+    "id": 6441,
+    "name": "Torrefina Gmbh.",
+    "location": {
+      "address": "Schottenfeldgasse 94",
+      "postalCode": "1070",
+      "city": "Wien",
+      "latitude": 48.2071479,
+      "longitude": 16.343487
+    },
+    "open": true,
+    "distance": 2.252,
+    "position": 2,
+    "prices": [{ "fuelType": "DIE", "amount": 1.987, "label": "Diesel" }]
+  },
+  {
+    "id": 6070,
+    "name": "TANKEnergie Ringgarage",
+    "location": {
+      "address": "Untere Viaduktgasse 47-49",
+      "postalCode": "1030",
+      "city": "Wien",
+      "latitude": 48.2066605,
+      "longitude": 16.3873229
+    },
+    "open": true,
+    "distance": 1.018,
+    "position": 3,
+    "prices": [{ "fuelType": "DIE", "amount": 2.049, "label": "Diesel" }]
+  },
+  {
+    "id": 41587,
+    "name": "DISK Gutmann",
+    "location": {
+      "address": "Franzensbrückenstraße 15",
+      "postalCode": "1020",
+      "city": "Wien,Leopoldstadt",
+      "latitude": 48.21461,
+      "longitude": 16.39166
+    },
+    "open": true,
+    "distance": 1.505,
+    "position": 6,
+    "prices": []
+  }
+]

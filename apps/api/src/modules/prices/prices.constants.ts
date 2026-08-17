@@ -1,0 +1,2 @@
+export const MAX_PRICE_HISTORY_LIMIT = 1000;
+export const DEFAULT_PRICE_HISTORY_LIMIT = 100;

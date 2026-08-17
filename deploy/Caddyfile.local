@@ -1,0 +1,34 @@
+# Local production simulation (HTTP only, no ACME).
+# Use with: docker compose -f docker-compose.prod.yml -f docker-compose.prod.local.yml up
+
+:80 {
+	encode gzip zstd
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		X-Frame-Options SAMEORIGIN
+		-Server
+	}
+
+	request_body {
+		max_size 15MB
+	}
+
+	@api path /api/*
+	handle @api {
+		reverse_proxy api:3001 {
+			header_up X-Forwarded-Proto http
+			header_up X-Forwarded-Host {host}
+			header_up X-Forwarded-For {remote_host}
+		}
+	}
+
+	handle {
+		reverse_proxy web:3000 {
+			header_up X-Forwarded-Proto http
+			header_up X-Forwarded-Host {host}
+			header_up X-Forwarded-For {remote_host}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+Estrazione del 2026-08-16
+idImpianto|Gestore|Bandiera|Tipo Impianto|Nome Impianto|Indirizzo|Comune|Provincia|Latitudine|Longitudine
+10001|Test Gestore SRL|Eni|Stradale|Roma Centro Test|Via del Corso 1|Roma|RM|41.902800|12.496400
+10002|Test Gestore SRL|Q8|Stradale|Roma EUR Test|Viale Europa 10|Roma|RM|41.834500|12.473800
+10003|Test Gestore SRL|IP|Autostrada|Roma Nord Test|A1 km 10|Roma|RM|42.010000|12.450000
+10004|Test Gestore SRL|Agip|Stradale|Tivoli Test|Via Tiburtina 100|Tivoli|RM|41.963300|12.798900
+10005|Test Gestore SRL|Unknown|Stradale|Invalid Coords|Nowhere|Roma|RM|0.000000|0.000000
+10006|Test Gestore SRL|Eni|Stradale|Quoted Address|Via Roma 5|Roma|RM|41.890000|12.490000
